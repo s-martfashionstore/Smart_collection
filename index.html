@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S-MART Collection</title>
+<meta name="description" content="S-MART Collection — jewellery, clothes, bags and men's accessories.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;color:#102a43;background:#fff}
+header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid #eee}
+.nav{max-width:1100px;margin:auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;font-size:28px;letter-spacing:-1px;color:#e91e63}
+.logo span{color:#0b2b4f}
+nav a{text-decoration:none;color:#102a43;margin-left:18px;font-weight:700}
+.hero{max-width:1100px;margin:auto;padding:55px 20px 35px;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.kicker{font-weight:800;letter-spacing:4px;color:#e91e63;margin-bottom:14px}
+h1{font-size:clamp(44px,7vw,76px);line-height:.94;margin-bottom:22px}
+.hero p{font-size:20px;line-height:1.55;color:#667788;margin-bottom:25px}
+.btn{display:inline-block;padding:15px 23px;border-radius:30px;text-decoration:none;font-weight:800;margin:5px}
+.primary{background:#e91e63;color:white}
+.secondary{border:1px solid #d6dbe0;color:#102a43}
+.slider{position:relative;overflow:hidden;border-radius:28px;background:#f6f8fa;min-height:420px}
+.slides{display:flex;width:300%;height:100%;animation:slide 10s infinite}
+.slide{width:33.333%;display:flex;align-items:center;justify-content:center;padding:25px}
+.slide img{width:100%;height:470px;object-fit:contain;border-radius:20px}
+@keyframes slide{
+0%,28%{transform:translateX(0)}
+33%,61%{transform:translateX(-33.333%)}
+66%,94%{transform:translateX(-66.666%)}
+100%{transform:translateX(0)}
+}
+section{max-width:1100px;margin:auto;padding:50px 20px}
+.title{text-align:center;font-size:38px;margin-bottom:12px}
+.sub{text-align:center;color:#708090;margin-bottom:30px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{background:#fff;border:1px solid #eee;border-radius:22px;padding:12px;box-shadow:0 8px 25px rgba(0,0,0,.06)}
+.card img{width:100%;height:240px;object-fit:contain;border-radius:16px;background:#f7f8fa}
+.card h3{padding:14px 8px 5px}
+.card p{padding:0 8px 12px;color:#73808c}
+.badge{display:inline-block;padding:7px 12px;border-radius:20px;background:#ffe8f0;color:#d4145a;font-weight:800;font-size:13px}
+.contact{background:#f7f9fb;border-radius:30px;text-align:center}
+footer{padding:30px 20px;text-align:center;color:#718096;border-top:1px solid #eee}
+@media(max-width:800px){
+ .hero{grid-template-columns:1fr;padding-top:35px}
+ .grid{grid-template-columns:repeat(2,1fr)}
+ nav a{margin-left:8px;font-size:13px}
+ .slider{min-height:330px}
+ .slide img{height:350px}
+}
+@media(max-width:480px){
+ .grid{grid-template-columns:1fr}
+ .logo{font-size:23px}
+ nav a{display:none}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <div class="logo">S-<span>MART</span></div>
+    <nav><a href="#collections">Collections</a><a href="#contact">Contact</a></nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div>
+    <div class="kicker">STYLE • QUALITY • COMFORT</div>
+    <h1>Make your everyday <i>look</i> feel special.</h1>
+    <p>Discover jewellery, clothes, bags and men's accessories at S-MART — your destination for effortless style.</p>
+    <a class="btn primary" href="#collections">Explore Collection →</a>
+    <a class="btn secondary" href="#contact">WhatsApp Enquiry</a>
+  </div>
+  <div class="slider" aria-label="Automatic product slider">
+    <div class="slides">
+      <div class="slide"><img src="images/backpack-blue.jpg" alt="S-MART backpack"></div>
+      <div class="slide"><img src="images/backpack-teal.jpg" alt="S-MART backpack"></div>
+      <div class="slide"><img src="images/backpack-black.jpg" alt="S-MART backpack"></div>
+    </div>
+  </div>
+</section>
+
+<section id="collections">
+  <h2 class="title">Our Collections</h2>
+  <p class="sub">Shop our latest styles and everyday essentials.</p>
+  <div class="grid">
+    <div class="card"><span class="badge">Collection</span><h3>Jewellery</h3><p>Imitation jewellery & stylish pieces.</p></div>
+    <div class="card"><span class="badge">Collection</span><h3>Clothes</h3><p>Ladies & gents clothing varieties.</p></div>
+    <div class="card"><span class="badge">Collection</span><h3>Bags</h3><p>Backpacks and useful everyday bags.</p></div>
+    <div class="card"><span class="badge">Collection</span><h3>Men's Accessories</h3><p>Accessories for everyday style.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2 class="title">Featured Bags</h2>
+  <p class="sub">Swipe/scroll through the collection — the hero images also slide automatically.</p>
+  <div class="grid">
+    <div class="card"><img src="images/backpack-blue.jpg" alt="Blue backpack"><h3>Blue Backpack</h3><p>Message us for price & availability.</p></div>
+    <div class="card"><img src="images/backpack-teal.jpg" alt="Teal backpack"><h3>Teal Backpack</h3><p>Message us for price & availability.</p></div>
+    <div class="card"><img src="images/backpack-black.jpg" alt="Black backpack"><h3>Black Backpack</h3><p>Message us for price & availability.</p></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact">
+    <h2 class="title">Order / Enquiry on WhatsApp</h2>
+    <p class="sub">We use WhatsApp messages for enquiries and orders. No call button.</p>
+    <a class="btn primary" href="#" onclick="openWhatsApp();return false;">Message on WhatsApp ↗</a>
+  </div>
+</section>
+</main>
+
+<footer>S-MART Collection • Style • Quality • Comfort</footer>
+
+<script>
+function openWhatsApp(){
+  // Replace the digits below with your WhatsApp number including country code.
+  // Example for India: 919876543210
+  const number = "91XXXXXXXXXX";
+  const text = encodeURIComponent("Hello S-MART, I want to enquire about a product.");
+  if(number.includes("X")){
+    alert("Please add your WhatsApp number in index.html first.");
+    return;
+  }
+  window.open("https://wa.me/" + number + "?text=" + text, "_blank");
+}
+</script>
+</body>
+</html>
