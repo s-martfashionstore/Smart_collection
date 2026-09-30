@@ -1,44 +1,235 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>S Mart Admin</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>S-MART Admin</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f6f7f9;
+  color:#172033;
+}
+
+.header{
+  background:#172033;
+  color:white;
+  padding:20px;
+  text-align:center;
+}
+
+.header h1{
+  color:#fff;
+}
+
+.container{
+  max-width:600px;
+  margin:30px auto;
+  padding:0 18px;
+}
+
+.panel{
+  background:white;
+  border-radius:22px;
+  padding:25px;
+  box-shadow:0 10px 35px rgba(0,0,0,.08);
+}
+
+.panel h2{
+  margin-bottom:20px;
+}
+
+label{
+  display:block;
+  font-weight:700;
+  margin:15px 0 7px;
+}
+
+input{
+  width:100%;
+  padding:14px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  font-size:16px;
+}
+
+input:focus{
+  outline:none;
+  border-color:#d4145a;
+}
+
+button{
+  width:100%;
+  margin-top:22px;
+  padding:15px;
+  border:none;
+  border-radius:30px;
+  background:#d4145a;
+  color:white;
+  font-size:16px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+#message{
+  text-align:center;
+  margin-top:18px;
+  font-weight:700;
+}
+
+.preview{
+  margin-top:25px;
+  padding-top:20px;
+  border-top:1px solid #eee;
+}
+
+.product{
+  background:#fafafa;
+  border-radius:16px;
+  padding:15px;
+  margin-top:12px;
+}
+
+.price{
+  color:#d4145a;
+  font-weight:900;
+  margin-top:5px;
+}
+</style>
 </head>
 
 <body>
 
-<h2>S Mart Admin Panel</h2>
+<div class="header">
+  <h1>S-MART</h1>
+  <p>Admin Panel</p>
+</div>
 
-<input id="productName" type="text" placeholder="Product Name">
-<br><br>
+<div class="container">
 
-<input id="price" type="number" placeholder="Price">
-<br><br>
+  <div class="panel">
 
-<button onclick="addProduct()">Add Product</button>
+    <h2>Add Product</h2>
 
-<p id="message"></p>
+    <label>Product Name</label>
+    <input
+      id="productName"
+      type="text"
+      placeholder="Example: Jewellery Set"
+    >
+
+    <label>Price</label>
+    <input
+      id="price"
+      type="number"
+      placeholder="Example: 700"
+    >
+
+    <label>Product Photo</label>
+    <input
+      id="photo"
+      type="file"
+      accept="image/*"
+    >
+
+    <button onclick="addProduct()">
+      + Add Product
+    </button>
+
+    <p id="message"></p>
+
+    <div class="preview">
+      <h3>Added Products</h3>
+      <div id="productList"></div>
+    </div>
+
+  </div>
+
+</div>
 
 <script>
-function addProduct() {
-  const name = document.getElementById("productName").value;
-  const price = document.getElementById("price").value;
 
-  if (!name || !price) {
+function addProduct(){
+
+  const name =
+    document.getElementById("productName").value.trim();
+
+  const price =
+    document.getElementById("price").value;
+
+  const photo =
+    document.getElementById("photo").files[0];
+
+  if(!name || !price){
+
     document.getElementById("message").innerText =
       "Please enter product name and price.";
+
     return;
   }
 
-  localStorage.setItem("productName", name);
-  localStorage.setItem("productPrice", price);
+  let products =
+    JSON.parse(localStorage.getItem("smartProducts") || "[]");
+
+  products.push({
+    name:name,
+    price:price,
+    photo:photo ? photo.name : ""
+  });
+
+  localStorage.setItem(
+    "smartProducts",
+    JSON.stringify(products)
+  );
 
   document.getElementById("message").innerText =
     "Product added successfully!";
 
   document.getElementById("productName").value = "";
   document.getElementById("price").value = "";
+  document.getElementById("photo").value = "";
+
+  showProducts();
 }
+
+
+function showProducts(){
+
+  const list =
+    document.getElementById("productList");
+
+  const products =
+    JSON.parse(localStorage.getItem("smartProducts") || "[]");
+
+  list.innerHTML = "";
+
+  products.forEach(function(product){
+
+    list.innerHTML += `
+      <div class="product">
+        <strong>${product.name}</strong>
+        <div class="price">₹${product.price}</div>
+        ${
+          product.photo
+          ? "<small>Photo: " + product.photo + "</small>"
+          : "<small>No photo selected</small>"
+        }
+      </div>
+    `;
+
+  });
+}
+
+showProducts();
+
 </script>
 
 </body>
