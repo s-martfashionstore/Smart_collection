@@ -1,142 +1,572 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>S-MART Collection</title>
-<meta name="description" content="S-MART Collection — jewellery, clothes, bags and men's accessories.">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,Helvetica,sans-serif;color:#102a43;background:#fff}
-header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid #eee}
-.nav{max-width:1100px;margin:auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.logo{font-weight:900;font-size:28px;letter-spacing:-1px;color:#e91e63}
-.logo span{color:#0b2b4f}
-nav a{text-decoration:none;color:#102a43;margin-left:18px;font-weight:700}
-.hero{max-width:1100px;margin:auto;padding:55px 20px 35px;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
-.kicker{font-weight:800;letter-spacing:4px;color:#e91e63;margin-bottom:14px}
-h1{font-size:clamp(44px,7vw,76px);line-height:.94;margin-bottom:22px}
-.hero p{font-size:20px;line-height:1.55;color:#667788;margin-bottom:25px}
-.btn{display:inline-block;padding:15px 23px;border-radius:30px;text-decoration:none;font-weight:800;margin:5px}
-.primary{background:#e91e63;color:white}
-.secondary{border:1px solid #d6dbe0;color:#102a43}
-.slider{position:relative;overflow:hidden;border-radius:28px;background:#f6f8fa;min-height:420px}
-.slides{display:flex;width:300%;height:100%;animation:slide 12s infinite}
-.slide{width:33.333%;display:flex;align-items:center;justify-content:center;padding:18px}
-.slide img{width:100%;height:470px;object-fit:contain;border-radius:20px}
-@keyframes slide{
-0%,28%{transform:translateX(0)}
-33%,61%{transform:translateX(-33.333%)}
-66%,94%{transform:translateX(-66.666%)}
-100%{transform:translateX(0)}
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>S-MART Collection</title>
+<meta name="description" content="S-MART Collection — jewellery, clothes, bags and men's accessories."><style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
-section{max-width:1100px;margin:auto;padding:50px 20px}
-.title{text-align:center;font-size:38px;margin-bottom:12px}
-.sub{text-align:center;color:#708090;margin-bottom:30px}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.card{background:#fff;border:1px solid #eee;border-radius:22px;padding:12px;box-shadow:0 8px 25px rgba(0,0,0,.06)}
-.card img{width:100%;height:280px;object-fit:contain;border-radius:16px;background:#f7f8fa}
-.card h3{padding:14px 8px 5px}
-.card p{padding:0 8px 12px;color:#73808c}
-.badge{display:inline-block;padding:7px 12px;border-radius:20px;background:#ffe8f0;color:#d4145a;font-weight:800;font-size:13px}
-.contact{background:#f7f9fb;border-radius:30px;text-align:center}
-footer{padding:30px 20px;text-align:center;color:#718096;border-top:1px solid #eee}
-.jewellery-grid{grid-template-columns:repeat(3,1fr)}
-.jewellery-grid .card img{height:390px}
-@media(max-width:800px){
-.hero{grid-template-columns:1fr;padding-top:35px}
-.grid{grid-template-columns:repeat(2,1fr)}
-nav a{margin-left:8px;font-size:13px}
-.slider{min-height:330px}
-.slide img{height:350px}
-.jewellery-grid{grid-template-columns:1fr 1fr}
-.jewellery-grid .card img{height:330px}
-}
-@media(max-width:480px){
-.grid,.jewellery-grid{grid-template-columns:1fr}
-.logo{font-size:23px}
-nav a{display:none}
-.jewellery-grid .card img{height:360px}
-}
-</style>
-</head>
-<body>
-<header>
-  <div class="nav">
-    <div class="logo">S-<span>MART</span></div>
-    <nav><a href="#collections">Collections</a><a href="#jewellery">Jewellery</a><a href="#contact">Contact</a></nav>
-  </div>
-</header>
 
-<main>
-<section class="hero">
-  <div>
-    <div class="kicker">STYLE • QUALITY • COMFORT</div>
-    <h1>Make your everyday <i>look</i> feel special.</h1>
-    <p>Discover jewellery, clothes, bags and men's accessories at S-MART — your destination for effortless style.</p>
-    <a class="btn primary" href="#jewellery">View Jewellery →</a>
-    <a class="btn secondary" href="#contact">WhatsApp Enquiry</a>
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  color:#172033;
+  background:#fafafa;
+  line-height:1.5;
+}
+
+/* HEADER */
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid #eee;
+}
+
+.nav{
+  max-width:1150px;
+  margin:auto;
+  padding:16px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-size:27px;
+  font-weight:900;
+  letter-spacing:-1px;
+  color:#d4145a;
+}
+
+.logo span{
+  color:#172033;
+}
+
+nav a{
+  text-decoration:none;
+  color:#172033;
+  margin-left:24px;
+  font-size:14px;
+  font-weight:700;
+}
+
+/* HERO */
+.hero{
+  max-width:1150px;
+  margin:auto;
+  padding:70px 22px 55px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:45px;
+  align-items:center;
+}
+
+.kicker{
+  color:#d4145a;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:3px;
+  margin-bottom:15px;
+}
+
+h1{
+  font-size:clamp(42px,6vw,72px);
+  line-height:.98;
+  letter-spacing:-2px;
+  margin-bottom:22px;
+}
+
+.hero p{
+  color:#697586;
+  font-size:18px;
+  max-width:560px;
+  margin-bottom:28px;
+}
+
+.btn{
+  display:inline-block;
+  padding:13px 21px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:800;
+  margin:4px;
+  transition:.25s;
+}
+
+.primary{
+  background:#d4145a;
+  color:white;
+  box-shadow:0 8px 20px rgba(212,20,90,.20);
+}
+
+.primary:hover{
+  transform:translateY(-2px);
+}
+
+.secondary{
+  border:1px solid #d9dee5;
+  color:#172033;
+  background:white;
+}
+
+/* HERO SLIDER */
+.slider{
+  overflow:hidden;
+  border-radius:30px;
+  background:#f1f3f6;
+  box-shadow:0 20px 50px rgba(0,0,0,.08);
+}
+
+.slides{
+  display:flex;
+  width:300%;
+  animation:slide 14s infinite;
+}
+
+.slide{
+  width:33.333%;
+  padding:18px;
+}
+
+.slide img{
+  display:block;
+  width:100%;
+  height:480px;
+  object-fit:contain;
+  border-radius:22px;
+  background:white;
+}
+
+@keyframes slide{
+  0%,28%{transform:translateX(0)}
+  33%,61%{transform:translateX(-33.333%)}
+  66%,94%{transform:translateX(-66.666%)}
+  100%{transform:translateX(0)}
+}
+
+/* SECTIONS */
+section{
+  max-width:1150px;
+  margin:auto;
+  padding:65px 22px;
+}
+
+.title{
+  text-align:center;
+  font-size:38px;
+  letter-spacing:-1px;
+  margin-bottom:8px;
+}
+
+.sub{
+  text-align:center;
+  color:#7b8794;
+  margin-bottom:35px;
+}
+
+/* COLLECTIONS */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+.collection-card{
+  background:white;
+  border:1px solid #eee;
+  border-radius:22px;
+  padding:28px 20px;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,.05);
+  transition:.25s;
+}
+
+.collection-card:hover{
+  transform:translateY(-5px);
+}
+
+.collection-icon{
+  font-size:34px;
+  margin-bottom:15px;
+}
+
+.collection-card h3{
+  margin-bottom:8px;
+}
+
+.collection-card p{
+  color:#7b8794;
+  font-size:14px;
+}
+
+/* PRODUCTS */
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+
+.card{
+  background:white;
+  border:1px solid #eee;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 12px 35px rgba(0,0,0,.06);
+  transition:.25s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 18px 40px rgba(0,0,0,.10);
+}
+
+.card img{
+  display:block;
+  width:100%;
+  height:360px;
+  object-fit:contain;
+  background:#f7f8fa;
+  padding:10px;
+}
+
+.card-content{
+  padding:18px;
+}
+
+.card h3{
+  font-size:19px;
+  margin-bottom:6px;
+}
+
+.price{
+  font-size:21px;
+  font-weight:900;
+  color:#d4145a;
+  margin-bottom:14px;
+}
+
+.whatsapp{
+  display:block;
+  text-align:center;
+  background:#172033;
+  color:white;
+  text-decoration:none;
+  padding:11px 15px;
+  border-radius:25px;
+  font-weight:700;
+}
+
+/* BAGS */
+.bag-section{
+  background:#f5f7f9;
+  max-width:none;
+}
+
+.bag-inner{
+  max-width:1150px;
+  margin:auto;
+}
+
+/* CONTACT */
+.contact{
+  background:linear-gradient(135deg,#fff0f5,#f5f7fb);
+  border-radius:30px;
+  padding:55px 25px;
+  text-align:center;
+}
+
+.contact .sub{
+  margin-bottom:20px;
+}
+
+/* FOOTER */
+footer{
+  padding:30px 20px;
+  text-align:center;
+  color:#7b8794;
+  border-top:1px solid #eee;
+  background:white;
+}
+
+/* MOBILE */
+@media(max-width:850px){
+
+  .hero{
+    grid-template-columns:1fr;
+    padding-top:45px;
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .product-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .slide img{
+    height:380px;
+  }
+
+}
+
+@media(max-width:520px){
+
+  .nav{
+    padding:14px 16px;
+  }
+
+  .logo{
+    font-size:23px;
+  }
+
+  nav a{
+    margin-left:10px;
+    font-size:12px;
+  }
+
+  .hero{
+    padding:40px 16px;
+    gap:25px;
+  }
+
+  h1{
+    font-size:45px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  section{
+    padding:50px 16px;
+  }
+
+  .title{
+    font-size:30px;
+  }
+
+  .grid,
+  .product-grid{
+    grid-template-columns:1fr;
+  }
+
+  .slide img{
+    height:330px;
+  }
+
+  .card img{
+    height:350px;
+  }
+}
+</style></head><body><header>
+  <div class="nav">
+    <div class="logo">S-<span>MART</span></div><nav>
+  <a href="#collections">Collections</a>
+  <a href="#jewellery">Jewellery</a>
+  <a href="#bags">Bags</a>
+  <a href="#contact">Contact</a>
+</nav>
+
   </div>
-  <div class="slider" aria-label="Automatic jewellery product slider">
-    <div class="slides">
-      <div class="slide"><img src="jewellery-1.jpg" alt="S-MART jewellery set"></div>
-      <div class="slide"><img src="jewellery-2.jpg" alt="S-MART mangalsutra jewellery set"></div>
-      <div class="slide"><img src="jewellery-3.jpg" alt="S-MART gold-tone mangalsutra set"></div>
+</header><main><!-- HERO --><section class="hero">  <div>
+    <div class="kicker">STYLE • QUALITY • COMFORT</div><h1>
+  Your style,
+  <i>your collection.</i>
+</h1>
+
+<p>
+  Discover beautiful jewellery, clothes, bags and men's accessories
+  at S-MART Collection.
+</p>
+
+<a class="btn primary" href="#jewellery">
+  Shop Jewellery
+</a>
+
+<a class="btn secondary"
+   href="https://wa.me/919209198816?text=Hello%20S-MART%2C%20I%20want%20to%20enquire%20about%20a%20product."
+   target="_blank">
+  WhatsApp Us
+</a>
+
+  </div>  <div class="slider"><div class="slides">
+
+  <div class="slide">
+    <img src="jewellery-1.jpg" alt="S-MART Jewellery">
+  </div>
+
+  <div class="slide">
+    <img src="jewellery-2.jpg" alt="S-MART Mangalsutra Set">
+  </div>
+
+  <div class="slide">
+    <img src="jewellery-3.jpg" alt="S-MART Traditional Jewellery">
+  </div>
+
+</div>
+
+  </div></section><!-- COLLECTIONS --><section id="collections">  <h2 class="title">Our Collections</h2>  <p class="sub">
+    Everything you need for everyday style.
+  </p>  <div class="grid"><div class="collection-card">
+  <div class="collection-icon">✨</div>
+  <h3>Jewellery</h3>
+  <p>Elegant imitation jewellery & stylish pieces.</p>
+</div>
+
+<div class="collection-card">
+  <div class="collection-icon">👗</div>
+  <h3>Clothes</h3>
+  <p>Ladies & gents clothing varieties.</p>
+</div>
+
+<div class="collection-card">
+  <div class="collection-icon">🎒</div>
+  <h3>Bags</h3>
+  <p>Stylish and useful everyday bags.</p>
+</div>
+
+<div class="collection-card">
+  <div class="collection-icon">⌚</div>
+  <h3>Men's Accessories</h3>
+  <p>Accessories for everyday style.</p>
+</div>
+
+  </div></section><!-- JEWELLERY --><section id="jewellery">  <h2 class="title">Jewellery Collection</h2>  <p class="sub">
+    Discover our latest imitation jewellery styles.
+  </p>  <div class="product-grid"><div class="card">
+
+  <img src="jewellery-1.jpg" alt="Jewellery Set">
+
+  <div class="card-content">
+    <h3>Jewellery Set</h3>
+
+    <div class="price">₹700</div>
+
+    <a class="whatsapp"
+       href="https://wa.me/919209198816?text=Hello%20S-MART%2C%20I%20am%20interested%20in%20the%20Jewellery%20Set."
+       target="_blank">
+      Enquire on WhatsApp
+    </a>
+  </div>
+
+</div>
+
+
+<div class="card">
+
+  <img src="jewellery-2.jpg" alt="Mangalsutra Set">
+
+  <div class="card-content">
+    <h3>Mangalsutra Set</h3>
+
+    <div class="price">₹700</div>
+
+    <a class="whatsapp"
+       href="https://wa.me/919209198816?text=Hello%20S-MART%2C%20I%20am%20interested%20in%20the%20Mangalsutra%20Set."
+       target="_blank">
+      Enquire on WhatsApp
+    </a>
+  </div>
+
+</div>
+
+
+<div class="card">
+
+  <img src="jewellery-3.jpg" alt="Traditional Jewellery">
+
+  <div class="card-content">
+    <h3>Traditional Jewellery</h3>
+
+    <div class="price">₹700</div>
+
+    <a class="whatsapp"
+       href="https://wa.me/919209198816?text=Hello%20S-MART%2C%20I%20am%20interested%20in%20the%20Traditional%20Jewellery."
+       target="_blank">
+      Enquire on WhatsApp
+    </a>
+  </div>
+
+</div>
+
+  </div></section><!-- BAGS --><section id="bags" class="bag-section">  <div class="bag-inner"><h2 class="title">Featured Bags</h2>
+
+<p class="sub">
+  Stylish everyday bags from S-MART.
+</p>
+
+<div class="product-grid">
+
+  <div class="card">
+    <img src="backpack-blue.jpg" alt="Blue Backpack">
+
+    <div class="card-content">
+      <h3>Blue Backpack</h3>
+
+      <a class="whatsapp"
+         href="https://wa.me/919209198816?text=Hello%20S-MART%2C%20I%20am%20interested%20in%20the%20Blue%20Backpack."
+         target="_blank">
+        Enquire on WhatsApp
+      </a>
     </div>
   </div>
-</section>
 
-<section id="collections">
-  <h2 class="title">Our Collections</h2>
-  <p class="sub">Shop our latest styles and everyday essentials.</p>
-  <div class="grid">
-    <div class="card"><span class="badge">Collection</span><h3>Jewellery</h3><p>Imitation jewellery & stylish pieces.</p></div>
-    <div class="card"><span class="badge">Collection</span><h3>Clothes</h3><p>Ladies & gents clothing varieties.</p></div>
-    <div class="card"><span class="badge">Collection</span><h3>Bags</h3><p>Backpacks and useful everyday bags.</p></div>
-    <div class="card"><span class="badge">Collection</span><h3>Men's Accessories</h3><p>Accessories for everyday style.</p></div>
+
+  <div class="card">
+    <img src="backpack-teal.jpg" alt="Teal Backpack">
+
+    <div class="card-content">
+      <h3>Teal Backpack</h3>
+
+      <a class="whatsapp"
+         href="https://wa.me/919209198816?text=Hello%20S-MART%2C%20I%20am%20interested%20in%20the%20Teal%20Backpack."
+         target="_blank">
+        Enquire on WhatsApp
+      </a>
+    </div>
   </div>
-</section>
 
-<section id="jewellery">
-  <h2 class="title">Jewellery Collection</h2>
-  <p class="sub">Explore our latest imitation jewellery styles. 700.</p>
-  <div class="grid jewellery-grid">
-    <div class="card"><img src="jewellery-1.jpg" alt="Jewellery set"><h3>Jewellery Set</h3><p> 700 price .</p></div>
-    <div class="card"><img src="jewellery-2.jpg" alt="Mangalsutra jewellery set"><h3>Mangalsutra Set</h3><p>700 price:.</p></div>
-    <div class="card"><img src="jewellery-3.jpg" alt="Gold-tone mangalsutra set"><h3>Traditional Jewellery</h3><p>700price:.</p></div>
+
+  <div class="card">
+    <img src="backpack-black.jpg" alt="Black Backpack">
+
+    <div class="card-content">
+      <h3>Black Backpack</h3>
+
+      <a class="whatsapp"
+         href="https://wa.me/919209198816?text=Hello%20S-MART%2C%20I%20am%20interested%20in%20the%20Black%20Backpack."
+         target="_blank">
+        Enquire on WhatsApp
+      </a>
+    </div>
   </div>
-      
 
-<section>
-  <h2 class="title">Featured Bags</h2>
-  <p class="sub">Swipe/scroll through the collection — the jewellery hero images slide automatically.</p>
-  <div class="grid">
-    <div class="card"><img src="backpack-blue.jpg" alt="Blue backpack"><h3>Blue Backpack</h3><p>Message us for price & availability.</p></div>
-    <div class="card"><img src="backpack-teal.jpg" alt="Teal backpack"><h3>Teal Backpack</h3><p>Message us for price & availability.</p></div>
-    <div class="card"><img src="backpack-black.jpg" alt="Black backpack"><h3>Black Backpack</h3><p>Message us for price & availability.</p></div>
-  </div>
-</section>
+</div>
 
-<section id="contact">
-  <div class="contact">
-    <h2 class="title">Order / Enquiry on WhatsApp</h2>
-    <p class="sub">We use WhatsApp messages for enquiries and orders. No call button.</p>
-    <a class="btn primary" href="#" onclick="openWhatsApp();return false;">Message on WhatsApp ↗</a>
-  </div>
-</section>
-</main>
+  </div></section><!-- CONTACT --><section id="contact">  <div class="contact"><h2 class="title">
+  Ready to Shop?
+</h2>
 
-<footer>S-MART Collection • Style • Quality • Comfort</footer>
-<script>
-function openWhatsApp(){
-  const number = "919209198816";
-  const text = encodeURIComponent("Hello S-MART, I want to enquire about a product.");
-  if(number.includes("X")){
-    alert("Please add your WhatsApp number in index.html first.");
-    return;
-  }
-  window.open("https://wa.me/" + number + "?text=" + text, "_blank");
-}
-</script>
-</body>
-</html>
+<p class="sub">
+  Message S-MART on WhatsApp for product details, price and orders.
+</p>
+
+<a class="btn primary"
+   href="https://wa.me/919209198816?text=Hello%20S-MART%2C%20I%20want%20to%20enquire%20about%20a%20product."
+   target="_blank">
+  Message on WhatsApp ↗
+</a>
+
+  </div></section></main><footer>
+  S-MART Collection • Style • Quality • Comfort
+</footer></body>
+    </html>
