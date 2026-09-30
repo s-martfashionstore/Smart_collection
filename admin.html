@@ -4,20 +4,35 @@
   <title>S Mart Admin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <body>
 
 <h2>S Mart Admin Panel</h2>
 
-<input type="text" placeholder="Product Name"><br><br>
-<input type="number" placeholder="Price"><br><br>
-<input type="file" accept="image/*"><br><br>
+<input id="productName" type="text" placeholder="Product Name">
+<br><br>
 
-<button>Add Product</button>
+<input id="price" type="number" placeholder="Price">
+<br><br>
 
-</body>
-</html>
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+<button onclick="addProduct()">Add Product</button>
+
+<p id="message"></p>
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc
+} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+
+
 const firebaseConfig = {
+   
   apiKey: "AIzaSyAzERvRj7VLhwKYqvFgRotPXKW-xpDZMo0",
   authDomain: "fir-mart-collection.firebaseapp.com",
   projectId: "fir-mart-collection",
@@ -26,3 +41,46 @@ const firebaseConfig = {
   appId: "1:1028424910999:web:99b8df0caa825eb49901d2",
   measurementId: "G-Y148CMCW04"
 };
+
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+
+window.addProduct = async function() {
+
+  const name = document.getElementById("productName").value;
+  const price = document.getElementById("price").value;
+
+  if (!name || !price) {
+    document.getElementById("message").innerText =
+      "Please enter product name and price.";
+    return;
+  }
+
+  try {
+
+    await addDoc(collection(db, "products"), {
+      name: name,
+      price: Number(price)
+    });
+
+    document.getElementById("message").innerText =
+      "Product added successfully!";
+
+    document.getElementById("productName").value = "";
+    document.getElementById("price").value = "";
+
+  } catch (error) {
+
+    document.getElementById("message").innerText =
+      "Error: " + error.message;
+
+  }
+
+};
+
+</script>
+
+</body>
+</html>
