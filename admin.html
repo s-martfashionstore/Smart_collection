@@ -14,7 +14,7 @@
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
+  font-family:Arial, sans-serif;
   background:#f6f7f9;
   color:#172033;
 }
@@ -22,35 +22,31 @@ body{
 .header{
   background:#172033;
   color:white;
-  padding:20px;
+  padding:22px;
   text-align:center;
 }
 
 .header h1{
-  color:#fff;
+  color:white;
 }
 
 .container{
-  max-width:600px;
+  max-width:650px;
   margin:30px auto;
   padding:0 18px;
 }
 
 .panel{
   background:white;
-  border-radius:22px;
   padding:25px;
+  border-radius:22px;
   box-shadow:0 10px 35px rgba(0,0,0,.08);
-}
-
-.panel h2{
-  margin-bottom:20px;
 }
 
 label{
   display:block;
   font-weight:700;
-  margin:15px 0 7px;
+  margin:16px 0 7px;
 }
 
 input{
@@ -61,22 +57,16 @@ input{
   font-size:16px;
 }
 
-input:focus{
-  outline:none;
-  border-color:#d4145a;
-}
-
 button{
   width:100%;
   margin-top:22px;
   padding:15px;
-  border:none;
+  border:0;
   border-radius:30px;
   background:#d4145a;
   color:white;
   font-size:16px;
   font-weight:800;
-  cursor:pointer;
 }
 
 #message{
@@ -85,21 +75,28 @@ button{
   font-weight:700;
 }
 
-.preview{
-  margin-top:25px;
-  padding-top:20px;
-  border-top:1px solid #eee;
+.product{
+  margin-top:20px;
+  padding:15px;
+  background:#fafafa;
+  border-radius:18px;
 }
 
-.product{
-  background:#fafafa;
-  border-radius:16px;
-  padding:15px;
+.product img{
+  width:100%;
+  height:250px;
+  object-fit:contain;
+  background:white;
+  border-radius:14px;
+}
+
+.product h3{
   margin-top:12px;
 }
 
 .price{
   color:#d4145a;
+  font-size:20px;
   font-weight:900;
   margin-top:5px;
 }
@@ -115,44 +112,41 @@ button{
 
 <div class="container">
 
-  <div class="panel">
+<div class="panel">
 
-    <h2>Add Product</h2>
+<h2>Add Product</h2>
 
-    <label>Product Name</label>
-    <input
-      id="productName"
-      type="text"
-      placeholder="Example: Jewellery Set"
-    >
+<label>Product Name</label>
+<input
+  id="productName"
+  type="text"
+  placeholder="Example: Jewellery Set">
 
-    <label>Price</label>
-    <input
-      id="price"
-      type="number"
-      placeholder="Example: 700"
-    >
+<label>Price</label>
+<input
+  id="price"
+  type="number"
+  placeholder="Example: 700">
 
-    <label>Product Photo</label>
-    <input
-      id="photo"
-      type="file"
-      accept="image/*"
-    >
+<label>Photo URL</label>
+<input
+  id="photoUrl"
+  type="url"
+  placeholder="Paste Cloudinary photo URL">
 
-    <button onclick="addProduct()">
-      + Add Product
-    </button>
+<button onclick="addProduct()">
+  + Add Product
+</button>
 
-    <p id="message"></p>
+<p id="message"></p>
 
-    <div class="preview">
-      <h3>Added Products</h3>
-      <div id="productList"></div>
-    </div>
+<hr style="margin:30px 0;border:0;border-top:1px solid #eee;">
 
-  </div>
+<h2>Added Products</h2>
 
+<div id="productList"></div>
+
+</div>
 </div>
 
 <script>
@@ -163,15 +157,15 @@ function addProduct(){
     document.getElementById("productName").value.trim();
 
   const price =
-    document.getElementById("price").value;
+    document.getElementById("price").value.trim();
 
-  const photo =
-    document.getElementById("photo").files[0];
+  const photoUrl =
+    document.getElementById("photoUrl").value.trim();
 
-  if(!name || !price){
+  if(!name || !price || !photoUrl){
 
     document.getElementById("message").innerText =
-      "Please enter product name and price.";
+      "Please fill Product Name, Price and Photo URL.";
 
     return;
   }
@@ -182,7 +176,7 @@ function addProduct(){
   products.push({
     name:name,
     price:price,
-    photo:photo ? photo.name : ""
+    photoUrl:photoUrl
   });
 
   localStorage.setItem(
@@ -195,7 +189,7 @@ function addProduct(){
 
   document.getElementById("productName").value = "";
   document.getElementById("price").value = "";
-  document.getElementById("photo").value = "";
+  document.getElementById("photoUrl").value = "";
 
   showProducts();
 }
@@ -215,13 +209,16 @@ function showProducts(){
 
     list.innerHTML += `
       <div class="product">
-        <strong>${product.name}</strong>
-        <div class="price">₹${product.price}</div>
-        ${
-          product.photo
-          ? "<small>Photo: " + product.photo + "</small>"
-          : "<small>No photo selected</small>"
-        }
+
+        <img src="${product.photoUrl}"
+             alt="${product.name}">
+
+        <h3>${product.name}</h3>
+
+        <div class="price">
+          ₹${product.price}
+        </div>
+
       </div>
     `;
 
