@@ -21,8 +21,8 @@ h1{font-size:clamp(44px,7vw,76px);line-height:.94;margin-bottom:22px}
 .primary{background:#e91e63;color:white}
 .secondary{border:1px solid #d6dbe0;color:#102a43}
 .slider{position:relative;overflow:hidden;border-radius:28px;background:#f6f8fa;min-height:420px}
-.slides{display:flex;width:300%;height:100%;animation:slide 10s infinite}
-.slide{width:33.333%;display:flex;align-items:center;justify-content:center;padding:25px}
+.slides{display:flex;width:300%;height:100%;animation:slide 12s infinite}
+.slide{width:33.333%;display:flex;align-items:center;justify-content:center;padding:18px}
 .slide img{width:100%;height:470px;object-fit:contain;border-radius:20px}
 @keyframes slide{
 0%,28%{transform:translateX(0)}
@@ -35,23 +35,28 @@ section{max-width:1100px;margin:auto;padding:50px 20px}
 .sub{text-align:center;color:#708090;margin-bottom:30px}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .card{background:#fff;border:1px solid #eee;border-radius:22px;padding:12px;box-shadow:0 8px 25px rgba(0,0,0,.06)}
-.card img{width:100%;height:240px;object-fit:contain;border-radius:16px;background:#f7f8fa}
+.card img{width:100%;height:280px;object-fit:contain;border-radius:16px;background:#f7f8fa}
 .card h3{padding:14px 8px 5px}
 .card p{padding:0 8px 12px;color:#73808c}
 .badge{display:inline-block;padding:7px 12px;border-radius:20px;background:#ffe8f0;color:#d4145a;font-weight:800;font-size:13px}
 .contact{background:#f7f9fb;border-radius:30px;text-align:center}
 footer{padding:30px 20px;text-align:center;color:#718096;border-top:1px solid #eee}
+.jewellery-grid{grid-template-columns:repeat(3,1fr)}
+.jewellery-grid .card img{height:390px}
 @media(max-width:800px){
- .hero{grid-template-columns:1fr;padding-top:35px}
- .grid{grid-template-columns:repeat(2,1fr)}
- nav a{margin-left:8px;font-size:13px}
- .slider{min-height:330px}
- .slide img{height:350px}
+.hero{grid-template-columns:1fr;padding-top:35px}
+.grid{grid-template-columns:repeat(2,1fr)}
+nav a{margin-left:8px;font-size:13px}
+.slider{min-height:330px}
+.slide img{height:350px}
+.jewellery-grid{grid-template-columns:1fr 1fr}
+.jewellery-grid .card img{height:330px}
 }
 @media(max-width:480px){
- .grid{grid-template-columns:1fr}
- .logo{font-size:23px}
- nav a{display:none}
+.grid,.jewellery-grid{grid-template-columns:1fr}
+.logo{font-size:23px}
+nav a{display:none}
+.jewellery-grid .card img{height:360px}
 }
 </style>
 </head>
@@ -59,7 +64,7 @@ footer{padding:30px 20px;text-align:center;color:#718096;border-top:1px solid #e
 <header>
   <div class="nav">
     <div class="logo">S-<span>MART</span></div>
-    <nav><a href="#collections">Collections</a><a href="#contact">Contact</a></nav>
+    <nav><a href="#collections">Collections</a><a href="#jewellery">Jewellery</a><a href="#contact">Contact</a></nav>
   </div>
 </header>
 
@@ -69,14 +74,14 @@ footer{padding:30px 20px;text-align:center;color:#718096;border-top:1px solid #e
     <div class="kicker">STYLE • QUALITY • COMFORT</div>
     <h1>Make your everyday <i>look</i> feel special.</h1>
     <p>Discover jewellery, clothes, bags and men's accessories at S-MART — your destination for effortless style.</p>
-    <a class="btn primary" href="#collections">Explore Collection →</a>
+    <a class="btn primary" href="#jewellery">View Jewellery →</a>
     <a class="btn secondary" href="#contact">WhatsApp Enquiry</a>
   </div>
-  <div class="slider" aria-label="Automatic product slider">
+  <div class="slider" aria-label="Automatic jewellery product slider">
     <div class="slides">
-      <div class="slide"><img src="images/backpack-blue.jpg" alt="S-MART backpack"></div>
-      <div class="slide"><img src="images/backpack-teal.jpg" alt="S-MART backpack"></div>
-      <div class="slide"><img src="images/backpack-black.jpg" alt="S-MART backpack"></div>
+      <div class="slide"><img src="images/jewellery-1.jpg" alt="S-MART jewellery set"></div>
+      <div class="slide"><img src="images/jewellery-2.jpg" alt="S-MART mangalsutra jewellery set"></div>
+      <div class="slide"><img src="images/jewellery-3.jpg" alt="S-MART gold-tone mangalsutra set"></div>
     </div>
   </div>
 </section>
@@ -92,9 +97,19 @@ footer{padding:30px 20px;text-align:center;color:#718096;border-top:1px solid #e
   </div>
 </section>
 
+<section id="jewellery">
+  <h2 class="title">Jewellery Collection</h2>
+  <p class="sub">Explore our latest imitation jewellery styles. Message us for price and availability.</p>
+  <div class="grid jewellery-grid">
+    <div class="card"><img src="images/jewellery-1.jpg" alt="Jewellery set"><h3>Jewellery Set</h3><p>Message us for price & availability.</p></div>
+    <div class="card"><img src="images/jewellery-2.jpg" alt="Mangalsutra jewellery set"><h3>Mangalsutra Set</h3><p>Message us for price & availability.</p></div>
+    <div class="card"><img src="images/jewellery-3.jpg" alt="Gold-tone mangalsutra set"><h3>Traditional Jewellery</h3><p>Message us for price & availability.</p></div>
+  </div>
+</section>
+
 <section>
   <h2 class="title">Featured Bags</h2>
-  <p class="sub">Swipe/scroll through the collection — the hero images also slide automatically.</p>
+  <p class="sub">Swipe/scroll through the collection — the jewellery hero images slide automatically.</p>
   <div class="grid">
     <div class="card"><img src="images/backpack-blue.jpg" alt="Blue backpack"><h3>Blue Backpack</h3><p>Message us for price & availability.</p></div>
     <div class="card"><img src="images/backpack-teal.jpg" alt="Teal backpack"><h3>Teal Backpack</h3><p>Message us for price & availability.</p></div>
@@ -112,11 +127,8 @@ footer{padding:30px 20px;text-align:center;color:#718096;border-top:1px solid #e
 </main>
 
 <footer>S-MART Collection • Style • Quality • Comfort</footer>
-
 <script>
 function openWhatsApp(){
-  // Replace the digits below with your WhatsApp number including country code.
-  // Example for India: 919876543210
   const number = "91XXXXXXXXXX";
   const text = encodeURIComponent("Hello S-MART, I want to enquire about a product.");
   if(number.includes("X")){
