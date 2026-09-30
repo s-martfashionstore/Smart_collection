@@ -19,36 +19,8 @@
 
 <p id="message"></p>
 
-<script type="module">
-
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
-
-import {
-  getFirestore,
-  collection,
-  addDoc
-} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
-
-
-const firebaseConfig = {
-   
-  apiKey: "AIzaSyAzERvRj7VLhwKYqvFgRotPXKW-xpDZMo0",
-  authDomain: "fir-mart-collection.firebaseapp.com",
-  projectId: "fir-mart-collection",
-  storageBucket: "fir-mart-collection.firebasestorage.app",
-  messagingSenderId: "1028424910999",
-  appId: "1:1028424910999:web:99b8df0caa825eb49901d2",
-  measurementId: "G-Y148CMCW04"
-};
-
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-
-window.addProduct = async function() {
-
+<script>
+function addProduct() {
   const name = document.getElementById("productName").value;
   const price = document.getElementById("price").value;
 
@@ -58,28 +30,15 @@ window.addProduct = async function() {
     return;
   }
 
-  try {
+  localStorage.setItem("productName", name);
+  localStorage.setItem("productPrice", price);
 
-    await addDoc(collection(db, "products"), {
-      name: name,
-      price: Number(price)
-    });
+  document.getElementById("message").innerText =
+    "Product added successfully!";
 
-    document.getElementById("message").innerText =
-      "Product added successfully!";
-
-    document.getElementById("productName").value = "";
-    document.getElementById("price").value = "";
-
-  } catch (error) {
-
-    document.getElementById("message").innerText =
-      "Error: " + error.message;
-
-  }
-
-};
-
+  document.getElementById("productName").value = "";
+  document.getElementById("price").value = "";
+}
 </script>
 
 </body>
