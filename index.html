@@ -1,8 +1,17 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>S-MART Collection</title>
-<meta name="description" content="S-MART Collection — jewellery, clothes, bags and men's accessories."><style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>S-MART Collection</title>
+
+<meta name="description"
+content="S-MART Collection — jewellery, clothes, bags and men's accessories.">
+
+<style>
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -21,6 +30,7 @@ body{
 }
 
 /* HEADER */
+
 header{
   position:sticky;
   top:0;
@@ -59,6 +69,7 @@ nav a{
 }
 
 /* HERO */
+
 .hero{
   max-width:1150px;
   margin:auto;
@@ -118,6 +129,7 @@ h1{
 }
 
 /* HERO SLIDER */
+
 .slider{
   overflow:hidden;
   border-radius:30px;
@@ -146,13 +158,27 @@ h1{
 }
 
 @keyframes slide{
-  0%,28%{transform:translateX(0)}
-  33%,61%{transform:translateX(-33.333%)}
-  66%,94%{transform:translateX(-66.666%)}
-  100%{transform:translateX(0)}
+
+  0%,28%{
+    transform:translateX(0)
+  }
+
+  33%,61%{
+    transform:translateX(-33.333%)
+  }
+
+  66%,94%{
+    transform:translateX(-66.666%)
+  }
+
+  100%{
+    transform:translateX(0)
+  }
+
 }
 
 /* SECTIONS */
+
 section{
   max-width:1150px;
   margin:auto;
@@ -173,6 +199,7 @@ section{
 }
 
 /* COLLECTIONS */
+
 .grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -208,6 +235,7 @@ section{
 }
 
 /* PRODUCTS */
+
 .product-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -264,7 +292,26 @@ section{
   font-weight:700;
 }
 
+/* FIREBASE PRODUCTS */
+
+.firebase-section{
+  background:#fff;
+}
+
+.loading{
+  text-align:center;
+  color:#7b8794;
+  padding:30px;
+}
+
+.empty{
+  text-align:center;
+  color:#7b8794;
+  padding:30px;
+}
+
 /* BAGS */
+
 .bag-section{
   background:#f5f7f9;
   max-width:none;
@@ -276,6 +323,7 @@ section{
 }
 
 /* CONTACT */
+
 .contact{
   background:linear-gradient(135deg,#fff0f5,#f5f7fb);
   border-radius:30px;
@@ -288,6 +336,7 @@ section{
 }
 
 /* FOOTER */
+
 footer{
   padding:30px 20px;
   text-align:center;
@@ -297,6 +346,7 @@ footer{
 }
 
 /* MOBILE */
+
 @media(max-width:850px){
 
   .hero{
@@ -366,207 +416,659 @@ footer{
   .card img{
     height:350px;
   }
+
 }
-</style></head><body><header>
-  <div class="nav">
-    <div class="logo">S-<span>MART</span></div><nav>
-  <a href="#collections">Collections</a>
-  <a href="#jewellery">Jewellery</a>
-  <a href="#bags">Bags</a>
-  <a href="#contact">Contact</a>
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+<div class="nav">
+
+<div class="logo">
+S-<span>MART</span>
+</div>
+
+<nav>
+
+<a href="#collections">Collections</a>
+
+<a href="#jewellery">Jewellery</a>
+
+<a href="#latest">Latest</a>
+
+<a href="#bags">Bags</a>
+
+<a href="#contact">Contact</a>
+
 </nav>
 
-  </div>
-</header><main><!-- HERO --><section class="hero">  <div>
-    <div class="kicker">STYLE • QUALITY • COMFORT</div><h1>
-  Your style,
-  <i>your collection.</i>
+</div>
+
+</header>
+
+
+<main>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div>
+
+<div class="kicker">
+STYLE • QUALITY • COMFORT
+</div>
+
+<h1>
+Your style,
+<i>your collection.</i>
 </h1>
 
 <p>
-  Discover beautiful jewellery, clothes, bags and men's accessories
-  at S-MART Collection.
+Discover beautiful jewellery, clothes, bags and men's accessories
+at S-MART Collection.
 </p>
 
 <a class="btn primary" href="#jewellery">
-  Shop Jewellery
+Shop Jewellery
 </a>
 
-<a class="btn secondary"
-   href="https://wa.me/919209198816?text=Hello%20S-MART%2C%20I%20want%20to%20enquire%20about%20a%20product."
-   target="_blank">
-  WhatsApp Us
+<a
+class="btn secondary"
+href="https://wa.me/919209198816?text=Hello%20S-MART%2C%20I%20want%20to%20enquire%20about%20a%20product."
+target="_blank">
+
+WhatsApp Us
+
 </a>
 
-  </div>  <div class="slider"><div class="slides">
-
-  <div class="slide">
-    <img src="jewellery-1.jpg" alt="S-MART Jewellery">
-  </div>
-
-  <div class="slide">
-    <img src="jewellery-2.jpg" alt="S-MART Mangalsutra Set">
-  </div>
-
-  <div class="slide">
-    <img src="jewellery-3.jpg" alt="S-MART Traditional Jewellery">
-  </div>
-
-</div>
-
-  </div></section><!-- COLLECTIONS --><section id="collections">  <h2 class="title">Our Collections</h2>  <p class="sub">
-    Everything you need for everyday style.
-  </p>  <div class="grid"><div class="collection-card">
-  <div class="collection-icon">✨</div>
-  <h3>Jewellery</h3>
-  <p>Elegant imitation jewellery & stylish pieces.</p>
-</div>
-
-<div class="collection-card">
-  <div class="collection-icon">👗</div>
-  <h3>Clothes</h3>
-  <p>Ladies & gents clothing varieties.</p>
-</div>
-
-<div class="collection-card">
-  <div class="collection-icon">🎒</div>
-  <h3>Bags</h3>
-  <p>Stylish and useful everyday bags.</p>
-</div>
-
-<div class="collection-card">
-  <div class="collection-icon">⌚</div>
-  <h3>Men's Accessories</h3>
-  <p>Accessories for everyday style.</p>
-</div>
-
-  </div></section><!-- JEWELLERY --><section id="jewellery">  <h2 class="title">Jewellery Collection</h2>  <p class="sub">
-    Discover our latest imitation jewellery styles.
-  </p>  <div class="product-grid"><div class="card">
-
-  <img src="jewellery-1.jpg" alt="Jewellery Set">
-
-  <div class="card-content">
-    <h3>Jewellery Set</h3>
-
-    <div class="price">₹700</div>
-
-    <a class="whatsapp"
-       href="https://wa.me/919209198816?text=Hello%20S-MART%2C%20I%20am%20interested%20in%20the%20Jewellery%20Set."
-       target="_blank">
-      Enquire on WhatsApp
-    </a>
-  </div>
-
 </div>
 
 
-<div class="card">
+<div class="slider">
 
-  <img src="jewellery-2.jpg" alt="Mangalsutra Set">
+<div class="slides">
 
-  <div class="card-content">
-    <h3>Mangalsutra Set</h3>
+<div class="slide">
+<img src="jewellery-1.jpg" alt="S-MART Jewellery">
+</div>
 
-    <div class="price">₹700</div>
+<div class="slide">
+<img src="jewellery-2.jpg" alt="S-MART Mangalsutra Set">
+</div>
 
-    <a class="whatsapp"
-       href="https://wa.me/919209198816?text=Hello%20S-MART%2C%20I%20am%20interested%20in%20the%20Mangalsutra%20Set."
-       target="_blank">
-      Enquire on WhatsApp
-    </a>
-  </div>
+<div class="slide">
+<img src="jewellery-3.jpg" alt="S-MART Traditional Jewellery">
+</div>
 
 </div>
 
-
-<div class="card">
-
-  <img src="jewellery-3.jpg" alt="Traditional Jewellery">
-
-  <div class="card-content">
-    <h3>Traditional Jewellery</h3>
-
-    <div class="price">₹700</div>
-
-    <a class="whatsapp"
-       href="https://wa.me/919209198816?text=Hello%20S-MART%2C%20I%20am%20interested%20in%20the%20Traditional%20Jewellery."
-       target="_blank">
-      Enquire on WhatsApp
-    </a>
-  </div>
-
 </div>
 
-  </div></section><!-- BAGS --><section id="bags" class="bag-section">  <div class="bag-inner"><h2 class="title">Featured Bags</h2>
+</section>
+
+
+<!-- COLLECTIONS -->
+
+<section id="collections">
+
+<h2 class="title">
+Our Collections
+</h2>
 
 <p class="sub">
-  Stylish everyday bags from S-MART.
+Everything you need for everyday style.
+</p>
+
+<div class="grid">
+
+
+<div class="collection-card">
+
+<div class="collection-icon">
+✨
+</div>
+
+<h3>
+Jewellery
+</h3>
+
+<p>
+Elegant imitation jewellery & stylish pieces.
+</p>
+
+</div>
+
+
+<div class="collection-card">
+
+<div class="collection-icon">
+👗
+</div>
+
+<h3>
+Clothes
+</h3>
+
+<p>
+Ladies & gents clothing varieties.
+</p>
+
+</div>
+
+
+<div class="collection-card">
+
+<div class="collection-icon">
+🎒
+</div>
+
+<h3>
+Bags
+</h3>
+
+<p>
+Stylish and useful everyday bags.
+</p>
+
+</div>
+
+
+<div class="collection-card">
+
+<div class="collection-icon">
+⌚
+</div>
+
+<h3>
+Men's Accessories
+</h3>
+
+<p>
+Accessories for everyday style.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- JEWELLERY -->
+
+<section id="jewellery">
+
+<h2 class="title">
+Jewellery Collection
+</h2>
+
+<p class="sub">
+Discover our latest jewellery styles.
+</p>
+
+
+<div class="product-grid">
+
+
+<div class="card">
+
+<img
+src="jewellery-1.jpg"
+alt="Jewellery Set">
+
+<div class="card-content">
+
+<h3>
+Jewellery Set
+</h3>
+
+<div class="price">
+₹700
+</div>
+
+<a
+class="whatsapp"
+href="https://wa.me/919209198816?text=Hello%20S-MART%2C%20I%20am%20interested%20in%20the%20Jewellery%20Set."
+target="_blank">
+
+Enquire on WhatsApp
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<img
+src="jewellery-2.jpg"
+alt="Mangalsutra Set">
+
+<div class="card-content">
+
+<h3>
+Mangalsutra Set
+</h3>
+
+<div class="price">
+₹700
+</div>
+
+<a
+class="whatsapp"
+href="https://wa.me/919209198816?text=Hello%20S-MART%2C%20I%20am%20interested%20in%20the%20Mangalsutra%20Set."
+target="_blank">
+
+Enquire on WhatsApp
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<img
+src="jewellery-3.jpg"
+alt="Traditional Jewellery">
+
+<div class="card-content">
+
+<h3>
+Traditional Jewellery
+</h3>
+
+<div class="price">
+₹700
+</div>
+
+<a
+class="whatsapp"
+href="https://wa.me/919209198816?text=Hello%20S-MART%2C%20I%20am%20interested%20in%20the%20Traditional%20Jewellery."
+target="_blank">
+
+Enquire on WhatsApp
+
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- FIREBASE LATEST PRODUCTS -->
+
+<section
+id="latest"
+class="firebase-section">
+
+<h2 class="title">
+Latest Products
+</h2>
+
+<p class="sub">
+New products added by S-MART.
+</p>
+
+<div
+id="firebaseProducts"
+class="product-grid">
+
+<div class="loading">
+Loading products...
+</div>
+
+</div>
+
+</section>
+
+
+<!-- BAGS -->
+
+<section
+id="bags"
+class="bag-section">
+
+<div class="bag-inner">
+
+<h2 class="title">
+Featured Bags
+</h2>
+
+<p class="sub">
+Stylish everyday bags from S-MART.
 </p>
 
 <div class="product-grid">
 
-  <div class="card">
-    <img src="backpack-blue.jpg" alt="Blue Backpack">
 
-    <div class="card-content">
-      <h3>Blue Backpack</h3>
+<div class="card">
 
-      <a class="whatsapp"
-         href="https://wa.me/919209198816?text=Hello%20S-MART%2C%20I%20am%20interested%20in%20the%20Blue%20Backpack."
-         target="_blank">
-        Enquire on WhatsApp
-      </a>
-    </div>
-  </div>
+<img
+src="backpack-blue.jpg"
+alt="Blue Backpack">
 
+<div class="card-content">
 
-  <div class="card">
-    <img src="backpack-teal.jpg" alt="Teal Backpack">
+<h3>
+Blue Backpack
+</h3>
 
-    <div class="card-content">
-      <h3>Teal Backpack</h3>
+<a
+class="whatsapp"
+href="https://wa.me/919209198816?text=Hello%20S-MART%2C%20I%20am%20interested%20in%20the%20Blue%20Backpack."
+target="_blank">
 
-      <a class="whatsapp"
-         href="https://wa.me/919209198816?text=Hello%20S-MART%2C%20I%20am%20interested%20in%20the%20Teal%20Backpack."
-         target="_blank">
-        Enquire on WhatsApp
-      </a>
-    </div>
-  </div>
+Enquire on WhatsApp
 
-
-  <div class="card">
-    <img src="backpack-black.jpg" alt="Black Backpack">
-
-    <div class="card-content">
-      <h3>Black Backpack</h3>
-
-      <a class="whatsapp"
-         href="https://wa.me/919209198816?text=Hello%20S-MART%2C%20I%20am%20interested%20in%20the%20Black%20Backpack."
-         target="_blank">
-        Enquire on WhatsApp
-      </a>
-    </div>
-  </div>
+</a>
 
 </div>
 
-  </div></section><!-- CONTACT --><section id="contact">  <div class="contact"><h2 class="title">
-  Ready to Shop?
+</div>
+
+
+<div class="card">
+
+<img
+src="backpack-teal.jpg"
+alt="Teal Backpack">
+
+<div class="card-content">
+
+<h3>
+Teal Backpack
+</h3>
+
+<a
+class="whatsapp"
+href="https://wa.me/919209198816?text=Hello%20S-MART%2C%20I%20am%20interested%20in%20the%20Teal%20Backpack."
+target="_blank">
+
+Enquire on WhatsApp
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<img
+src="backpack-black.jpg"
+alt="Black Backpack">
+
+<div class="card-content">
+
+<h3>
+Black Backpack
+</h3>
+
+<a
+class="whatsapp"
+href="https://wa.me/919209198816?text=Hello%20S-MART%2C%20I%20am%20interested%20in%20the%20Black%20Backpack."
+target="_blank">
+
+Enquire on WhatsApp
+
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<div class="contact">
+
+<h2 class="title">
+Ready to Shop?
 </h2>
 
 <p class="sub">
-  Message S-MART on WhatsApp for product details, price and orders.
+Message S-MART on WhatsApp for product details, price and orders.
 </p>
 
-<a class="btn primary"
-   href="https://wa.me/919209198816?text=Hello%20S-MART%2C%20I%20want%20to%20enquire%20about%20a%20product."
-   target="_blank">
-  Message on WhatsApp ↗
+<a
+class="btn primary"
+href="https://wa.me/919209198816?text=Hello%20S-MART%2C%20I%20want%20to%20enquire%20about%20a%20product."
+target="_blank">
+
+Message on WhatsApp ↗
+
 </a>
 
-  </div></section></main><footer>
-  S-MART Collection • Style • Quality • Comfort
-</footer></body>
-    </html>
+</div>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+S-MART Collection • Style • Quality • Comfort
+
+</footer>
+
+
+<!-- FIREBASE -->
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+
+import {
+getFirestore,
+collection,
+getDocs
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+const firebaseConfig = {
+
+apiKey:
+"AIzaSyAzERvRj7VLhwKYqvFgRotPXKW-xpDZMo0",
+
+authDomain:
+"fir-mart-collection.firebaseapp.com",
+
+projectId:
+"fir-mart-collection",
+
+storageBucket:
+"fir-mart-collection.firebasestorage.app",
+
+messagingSenderId:
+"1028424910999",
+
+appId:
+"1:1028424910999:web:99b8df0caa825eb49901d2",
+
+measurementId:
+"G-Y148CMCW04"
+
+};
+
+
+const app =
+initializeApp(firebaseConfig);
+
+
+const db =
+getFirestore(app);
+
+
+function escapeHtml(value){
+
+return String(value ?? "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+async function loadProducts(){
+
+const container =
+document.getElementById("firebaseProducts");
+
+
+try{
+
+const snapshot =
+await getDocs(
+collection(db,"products")
+);
+
+
+if(snapshot.empty){
+
+container.innerHTML =
+'<div class="empty">No new products yet.</div>';
+
+return;
+
+}
+
+
+container.innerHTML = "";
+
+
+snapshot.forEach(function(doc){
+
+const product =
+doc.data();
+
+
+const name =
+String(
+product.Name ||
+product.name ||
+"Product"
+).trim();
+
+
+const price =
+product.Price ??
+product.price ??
+"";
+
+
+const photo =
+product.photoUrl ||
+product.photoURL ||
+product.image ||
+"";
+
+
+const message =
+encodeURIComponent(
+"Hello S-MART, I am interested in the " +
+name +
+"."
+);
+
+
+container.innerHTML += `
+
+<div class="card">
+
+<img
+src="${escapeHtml(photo)}"
+alt="${escapeHtml(name)}">
+
+<div class="card-content">
+
+<h3>
+${escapeHtml(name)}
+</h3>
+
+<div class="price">
+₹${escapeHtml(price)}
+</div>
+
+<a
+class="whatsapp"
+href="https://wa.me/919209198816?text=${message}"
+target="_blank">
+
+Enquire on WhatsApp
+
+</a>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+
+}
+
+catch(error){
+
+console.error(
+"Firebase error:",
+error
+);
+
+container.innerHTML =
+'<div class="empty">Products could not be loaded.</div>';
+
+}
+
+}
+
+
+loadProducts();
+
+</script>
+
+
+</body>
+
+  </html>
+
+
