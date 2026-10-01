@@ -1,5 +1,4 @@
-
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -66,6 +65,11 @@ button{
   font-weight:800;
 }
 
+.delete-btn{
+  background:#172033;
+  margin-top:12px;
+}
+
 #message{
   text-align:center;
   margin-top:18px;
@@ -113,16 +117,28 @@ button{
 <h2>Add Product</h2>
 
 <label>Product Name</label>
-<input id="productName" type="text"
+
+<input
+id="productName"
+type="text"
 placeholder="Example: Jewellery Set">
 
+
 <label>Price</label>
-<input id="price" type="number"
+
+<input
+id="price"
+type="number"
 placeholder="Example: 700">
 
+
 <label>Photo URL</label>
-<input id="photoUrl" type="url"
+
+<input
+id="photoUrl"
+type="url"
 placeholder="Paste Cloudinary photo URL">
+
 
 <button onclick="addProduct()">
 + Add Product
@@ -134,163 +150,252 @@ placeholder="Paste Cloudinary photo URL">
 
 <h2>Added Products</h2>
 
-<div id="productList"></div>
+<div id="productList">
+Loading...
+</div>
 
 </div>
 </div>
 
-<!-- Firebase -->
+
 <script type="module">
 
 import { initializeApp }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
-  getFirestore,
-  collection,
-  addDoc,
-  getDocs
+getFirestore,
+collection,
+addDoc,
+getDocs,
+deleteDoc,
+doc
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 
 const firebaseConfig = {
 
-  apiKey: "AIzaSyAzERvRj7VLhwKYqvFgRotPXKW-xpDZMo0",
+apiKey:
+"AIzaSyAzERvRj7VLhwKYqvFgRotPXKW-xpDZMo0",
 
-  authDomain: "fir-mart-collection.firebaseapp.com",
+authDomain:
+"fir-mart-collection.firebaseapp.com",
 
-  projectId: "fir-mart-collection",
+projectId:
+"fir-mart-collection",
 
-  storageBucket: "fir-mart-collection.firebasestorage.app",
+storageBucket:
+"fir-mart-collection.firebasestorage.app",
 
-  messagingSenderId: "1028424910999",
+messagingSenderId:
+"1028424910999",
 
-  appId: "1:1028424910999:web:99b8df0caa825eb49901d2",
+appId:
+"1:1028424910999:web:99b8df0caa825eb49901d2",
 
-  measurementId: "G-Y148CMCW04"
+measurementId:
+"G-Y148CMCW04"
+
 };
 
 
-const app = initializeApp(firebaseConfig);
+const app =
+initializeApp(firebaseConfig);
 
-const db = getFirestore(app);
+const db =
+getFirestore(app);
 
 
 window.addProduct = async function(){
 
-  const name =
-    document.getElementById("productName").value.trim();
+const name =
+document.getElementById("productName").value.trim();
 
-  const price =
-    document.getElementById("price").value.trim();
+const price =
+document.getElementById("price").value.trim();
 
-  const photoUrl =
-    document.getElementById("photoUrl").value.trim();
-
-
-  if(!name || !price || !photoUrl){
-
-    document.getElementById("message").innerText =
-      "Please fill all fields.";
-
-    return;
-  }
+const photoUrl =
+document.getElementById("photoUrl").value.trim();
 
 
-  try{
+if(!name || !price || !photoUrl){
 
-    await addDoc(collection(db,"products"),{
+document.getElementById("message").innerText =
+"Please fill all fields.";
 
-      Name: name,
+return;
 
-      Price: Number(price),
-
-      photoUrl: photoUrl
-
-    });
+}
 
 
-    document.getElementById("message").innerText =
-      "Product added to Firebase successfully!";
+try{
+
+await addDoc(
+collection(db,"products"),
+{
+
+Name:name,
+
+Price:Number(price),
+
+photoUrl:photoUrl
+
+}
+);
 
 
-    document.getElementById("productName").value = "";
-
-    document.getElementById("price").value = "";
-
-    document.getElementById("photoUrl").value = "";
+document.getElementById("message").innerText =
+"Product added successfully!";
 
 
-    showProducts();
+document.getElementById("productName").value = "";
 
-  }
+document.getElementById("price").value = "";
 
-  catch(error){
+document.getElementById("photoUrl").value = "";
 
-    console.error(error);
 
-    document.getElementById("message").innerText =
-      "Error: " + error.message;
+showProducts();
 
-  }
+}
+
+catch(error){
+
+console.error(error);
+
+document.getElementById("message").innerText =
+"Error: " + error.message;
+
+}
+
+};
+
+
+window.deleteProduct = async function(id){
+
+const confirmDelete =
+confirm("Delete this product?");
+
+
+if(!confirmDelete){
+return;
+}
+
+
+try{
+
+await deleteDoc(
+doc(db,"products",id)
+);
+
+
+document.getElementById("message").innerText =
+"Product deleted successfully!";
+
+
+showProducts();
+
+}
+
+catch(error){
+
+console.error(error);
+
+document.getElementById("message").innerText =
+"Delete error: " + error.message;
+
+}
 
 };
 
 
 async function showProducts(){
 
-  const list =
-    document.getElementById("productList");
+const list =
+document.getElementById("productList");
 
-  list.innerHTML = "Loading...";
-
-
-  try{
-
-    const snapshot =
-      await getDocs(collection(db,"products"));
+list.innerHTML =
+"Loading...";
 
 
-    list.innerHTML = "";
+try{
+
+const snapshot =
+await getDocs(
+collection(db,"products")
+);
 
 
-    snapshot.forEach(function(doc){
+list.innerHTML = "";
 
-      const product = doc.data();
 
-      list.innerHTML += `
+if(snapshot.empty){
 
-        <div class="product">
+list.innerHTML =
+"<p>No products yet.</p>";
 
-          <img
-            src="${product.photoUrl}"
-            alt="${product.Name || "Product"}">
+return;
 
-          <h3>
-            ${product.Name || "Product"}
-          </h3>
+}
 
-          <div class="price">
-            ₹${product.Price || 0}
-          </div>
 
-        </div>
+snapshot.forEach(function(item){
 
-      `;
+const product =
+item.data();
 
-    });
 
-  }
+const name =
+product.Name || "Product";
 
-  catch(error){
+const price =
+product.Price || 0;
 
-    console.error(error);
+const photo =
+product.photoUrl || "";
 
-    list.innerHTML =
-      "Could not load products.";
 
-  }
+list.innerHTML += `
+
+<div class="product">
+
+<img
+src="${photo}"
+alt="${name}">
+
+<h3>
+${name}
+</h3>
+
+<div class="price">
+₹${price}
+</div>
+
+<button
+class="delete-btn"
+onclick="deleteProduct('${item.id}')">
+
+Delete Product
+
+</button>
+
+</div>
+
+`;
+
+});
+
+}
+
+catch(error){
+
+console.error(error);
+
+list.innerHTML =
+"Could not load products.";
+
+}
 
 }
 
@@ -305,5 +410,4 @@ showProducts();
   
 
 
-
-  
+      
