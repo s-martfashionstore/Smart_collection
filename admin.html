@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+  <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -14,7 +15,7 @@
 }
 
 body{
-  font-family:Arial, sans-serif;
+  font-family:Arial,sans-serif;
   background:#f6f7f9;
   color:#172033;
 }
@@ -24,10 +25,6 @@ body{
   color:white;
   padding:22px;
   text-align:center;
-}
-
-.header h1{
-  color:white;
 }
 
 .container{
@@ -111,31 +108,24 @@ button{
 </div>
 
 <div class="container">
-
 <div class="panel">
 
 <h2>Add Product</h2>
 
 <label>Product Name</label>
-<input
-  id="productName"
-  type="text"
-  placeholder="Example: Jewellery Set">
+<input id="productName" type="text"
+placeholder="Example: Jewellery Set">
 
 <label>Price</label>
-<input
-  id="price"
-  type="number"
-  placeholder="Example: 700">
+<input id="price" type="number"
+placeholder="Example: 700">
 
 <label>Photo URL</label>
-<input
-  id="photoUrl"
-  type="url"
-  placeholder="Paste Cloudinary photo URL">
+<input id="photoUrl" type="url"
+placeholder="Paste Cloudinary photo URL">
 
 <button onclick="addProduct()">
-  + Add Product
++ Add Product
 </button>
 
 <p id="message"></p>
@@ -149,9 +139,45 @@ button{
 </div>
 </div>
 
-<script>
+<!-- Firebase -->
+<script type="module">
 
-function addProduct(){
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+const firebaseConfig = {
+
+  apiKey: "AIzaSyAzERvRj7VLhwKYqvFgRotPXKW-xpDZMo0",
+
+  authDomain: "fir-mart-collection.firebaseapp.com",
+
+  projectId: "fir-mart-collection",
+
+  storageBucket: "fir-mart-collection.firebasestorage.app",
+
+  messagingSenderId: "1028424910999",
+
+  appId: "1:1028424910999:web:99b8df0caa825eb49901d2",
+
+  measurementId: "G-Y148CMCW04"
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+
+window.addProduct = async function(){
 
   const name =
     document.getElementById("productName").value.trim();
@@ -162,68 +188,112 @@ function addProduct(){
   const photoUrl =
     document.getElementById("photoUrl").value.trim();
 
+
   if(!name || !price || !photoUrl){
 
     document.getElementById("message").innerText =
-      "Please fill Product Name, Price and Photo URL.";
+      "Please fill all fields.";
 
     return;
   }
 
-  let products =
-    JSON.parse(localStorage.getItem("smartProducts") || "[]");
 
-  products.push({
-    name:name,
-    price:price,
-    photoUrl:photoUrl
-  });
+  try{
 
-  localStorage.setItem(
-    "smartProducts",
-    JSON.stringify(products)
-  );
+    await addDoc(collection(db,"products"),{
 
-  document.getElementById("message").innerText =
-    "Product added successfully!";
+      Name: name,
 
-  document.getElementById("productName").value = "";
-  document.getElementById("price").value = "";
-  document.getElementById("photoUrl").value = "";
+      Price: Number(price),
 
-  showProducts();
-}
+      photoUrl: photoUrl
+
+    });
 
 
-function showProducts(){
+    document.getElementById("message").innerText =
+      "Product added to Firebase successfully!";
+
+
+    document.getElementById("productName").value = "";
+
+    document.getElementById("price").value = "";
+
+    document.getElementById("photoUrl").value = "";
+
+
+    showProducts();
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+    document.getElementById("message").innerText =
+      "Error: " + error.message;
+
+  }
+
+};
+
+
+async function showProducts(){
 
   const list =
     document.getElementById("productList");
 
-  const products =
-    JSON.parse(localStorage.getItem("smartProducts") || "[]");
+  list.innerHTML = "Loading...";
 
-  list.innerHTML = "";
 
-  products.forEach(function(product){
+  try{
 
-    list.innerHTML += `
-      <div class="product">
+    const snapshot =
+      await getDocs(collection(db,"products"));
 
-        <img src="${product.photoUrl}"
-             alt="${product.name}">
 
-        <h3>${product.name}</h3>
+    list.innerHTML = "";
 
-        <div class="price">
-          ₹${product.price}
+
+    snapshot.forEach(function(doc){
+
+      const product = doc.data();
+
+      list.innerHTML += `
+
+        <div class="product">
+
+          <img
+            src="${product.photoUrl}"
+            alt="${product.Name || "Product"}">
+
+          <h3>
+            ${product.Name || "Product"}
+          </h3>
+
+          <div class="price">
+            ₹${product.Price || 0}
+          </div>
+
         </div>
 
-      </div>
-    `;
+      `;
 
-  });
+    });
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+    list.innerHTML =
+      "Could not load products.";
+
+  }
+
 }
+
 
 showProducts();
 
@@ -231,3 +301,9 @@ showProducts();
 
 </body>
 </html>
+  
+  
+
+
+
+  
