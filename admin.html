@@ -305,7 +305,7 @@ if(!data.secure_url){
 
 console.log(data);
 
-throw new Error("Cloudinary upload failed");
+throw new Error(data?.error?.message || "Cloudinary upload failed");
 
 }
 
